@@ -1,0 +1,13 @@
+<launch>
+	<arg name="camera" default="camera"/>
+	<arg name="camera_id" default="0" />
+	<arg name="publish_rate" default="15"/>
+
+	<node name="$(arg camera)" pkg="simple_webcam" type="camera.py">
+		<param name="camera_id" value="$(arg camera_id)"/>
+		<param name="publish_rate" value="$(arg publish_rate)"/>
+	</node>
+
+	<env name="ROS_NAMESPACE" value="$(arg camera)"/>
+	<node name="$(arg camera)_image_proc" pkg="image_proc" type="image_proc"/>
+</launch>
