@@ -11,7 +11,7 @@ if __name__ == '__main__':
 	cap = cv2.VideoCapture()
 	cap.open(rospy.get_param('~camera_id', 0))
 
-	manager = CameraInfoManager(rospy.get_name().strip('/'))
+	manager = CameraInfoManager(rospy.get_name().strip('/'), url=rospy.get_param('~info_url', ''))
 	manager.loadCameraInfo()
 
 	image_pub = rospy.Publisher('~image_raw', Image)
