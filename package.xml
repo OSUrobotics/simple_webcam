@@ -1,0 +1,30 @@
+<package>
+  <name>simple_webcam</name>
+  <version>1.0.0</version>
+  <description>Simple OpenCV-based driver for USB webcams. Supports standard ROS camera API, and launch files are provided which run image_proc and provide tf frames.</description>
+  <maintainer email="lazewatd@engr.oregonstate.edu">Dan Lazewatsky</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/simple_webcam</url>
+  <url type="bugtracker">https://github.com/OSUrobotics/simple_webcam/issues</url>
+
+  <author>Dan Lazewatsky</author>
+
+  <!-- Dependencies which this package needs to build itself. -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Dependencies needed to compile this package. -->
+  <build_depend>camera_info_manager_py</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>rospy</build_depend>
+
+  <!-- Dependencies needed after this package is compiled. -->
+  <run_depend>camera_info_manager_py</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>image_proc</run_depend>
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>tf</run_depend>
+</package>
