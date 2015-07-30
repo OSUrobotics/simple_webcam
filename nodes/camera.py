@@ -25,7 +25,7 @@ if __name__ == '__main__':
 		frame = cap.retrieve()
 		header.stamp = rospy.Time.now()
 		if frame[0]:
-			msg = _bridge.cv_to_imgmsg(cv2.cv.fromarray(frame[1]), "bgr8")
+			msg = _bridge.cv2_to_imgmsg(frame[1], "bgr8")
 			msg.header = header
 
 			if manager.isCalibrated():
