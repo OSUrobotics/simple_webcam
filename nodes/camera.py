@@ -14,8 +14,8 @@ if __name__ == '__main__':
 	manager = CameraInfoManager(rospy.get_name().strip('/'), url=rospy.get_param('~info_url', ''))
 	manager.loadCameraInfo()
 
-	image_pub = rospy.Publisher('~image_raw', Image)
-	info_pub  = rospy.Publisher('~camera_info', CameraInfo)
+	image_pub = rospy.Publisher('~image_raw', Image, queue_size=1)
+	info_pub  = rospy.Publisher('~camera_info', CameraInfo, queue_size=1)
 
 	rate = rospy.Rate(rospy.get_param('~publish_rate', 15))
 	header = rospy.Header()
