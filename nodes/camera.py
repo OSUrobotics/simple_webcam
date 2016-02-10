@@ -10,6 +10,17 @@ if __name__ == '__main__':
 	rospy.init_node('camera')
 	cap = cv2.VideoCapture()
 	cap.open(rospy.get_param('~camera_id', 0))
+	width_default = cap.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)  # get current resolution
+	height_default = cap.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)
+
+	# Modify camera resolution
+	width_requested = rospy.get_param('~image_width', width_default)  # grab params
+	height_requested = rospy.get_param('~image_height', height_default)
+	cap.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, width_requested)  # set resolution
+	cap.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, height_requested)
+	width_new = cap.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)  # check result (which is often different than what you request!)
+	height_new = cap.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)
+	rospy.loginfo('Image resolution will be: ({0}, {1})'.format(width_new, height_new))
 
 	manager = CameraInfoManager(rospy.get_name().strip('/'), url=rospy.get_param('~info_url', ''))
 	manager.loadCameraInfo()
