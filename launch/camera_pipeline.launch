@@ -6,7 +6,7 @@
 	<arg name="publish_rate" default="15"/>
 	<arg name="info_url" default=""/>
 
-<node name="$(arg camera)" pkg="simple_webcam" type="camera.py" output="screen" >
+<node name="$(arg camera)" pkg="simple_webcam" type="camera.py" >
     <param name="camera_id" value="$(arg camera_id)"/>
     <param name="image_width" value="$(arg image_width)"/>
     <param name="image_height" value="$(arg image_height)"/>
