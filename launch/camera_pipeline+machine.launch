@@ -1,12 +1,16 @@
 <launch>
 	<arg name="camera" default="camera"/>
 	<arg name="camera_id" default="0" />
+	<arg name="image_width" default="640" />
+	<arg name="image_height" default="480" />
 	<arg name="publish_rate" default="15"/>
 	<arg name="machine" default=""/>
 	<arg name="info_url" default=""/>
 
-	<node name="$(arg camera)" pkg="simple_webcam" type="camera.py" machine="$(arg machine)">
+	<node name="$(arg camera)" pkg="simple_webcam" type="camera.py" machine="$(arg machine)" >
 		<param name="camera_id" value="$(arg camera_id)"/>
+    		<param name="image_width" value="$(arg image_width)"/>
+		<param name="image_height" value="$(arg image_height)"/>
 	 	<param name="publish_rate" value="$(arg publish_rate)"/>
 		<param name="info_url" value="$(arg info_url)"/>
 	</node>
